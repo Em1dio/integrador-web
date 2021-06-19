@@ -1,3 +1,5 @@
 module.exports = {
-    publicPath: '/integrador/'
+    publicPath: process.env.NODE_ENV === 'production'
+      ? '/integrador-web/'
+      : '/'
   }
