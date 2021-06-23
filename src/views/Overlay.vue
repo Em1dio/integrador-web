@@ -33,10 +33,12 @@ export default {
       },
       progresso: 0,
       comentarios: "!projeto !hub",
+      timer: ''
     };
   },
   created() {
     this.getIssues();
+    this.timer = setInterval(this.getIssues, 30000);
   },
   methods: {
     async getIssues() {
