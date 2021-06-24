@@ -13,7 +13,7 @@
           <p>{{ progresso | toPercent }}</p>
         </div>
         <div class="comentarios">
-          <h2>{{ comentarios }}</h2>
+          <h2>{{ comments }}</h2>
         </div>
       </div>
     </div>
@@ -28,12 +28,12 @@ export default {
   data() {
     return {
       github: {
-        owner: "AHub-Tech",
-        repository: "hub-api",
+        owner: this.$route.query.owner || "user",
+        repository: this.$route.query.repository || "repo",
       },
       progresso: 0,
-      comentarios: "!projeto !hub",
-      timer: ''
+      comments: this.$route.query.comments,
+      timer: "",
     };
   },
   created() {
@@ -48,9 +48,10 @@ export default {
       const data = await response.json();
 
       const getIssueState = (state) => {
-        const issuesByState = data.filter((issues) => issues.state === state);
-
-        return issuesByState.length;
+        try {
+          const issuesByState = data.filter((issues) => issues.state === state);
+          return issuesByState.length;
+        } catch (error) {}
       };
 
       const opened = getIssueState("open");
@@ -66,7 +67,7 @@ export default {
   computed: {
     styled() {
       return {
-        width:`${this.progresso * 100}%`,
+        width: `${this.progresso * 100}%`,
       };
     },
   },

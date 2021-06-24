@@ -12,8 +12,9 @@ const routes = [
     component: Home,
   },
   {
-    path: '/overlay',
+    path: '/barra-github',
     name: 'Overlay',
+    
     component: Overlay,
   },
 ];

@@ -1,5 +1,16 @@
 # vue-canvas
 
+## Link
+```
+https://integrador-web.pages.dev/
+```
+
+## Routes
+```
+http://{{url}}/barra-github?owner=ahub-tech&repository=hub-api&comments=%21projeto%20%21hub
+https://integrador-web.pages.dev/barra-github?owner=ahub-tech&repository=hub-api&comments=%21projeto%20%21hub
+```
+
 ## Project setup
 ```
 npm install
