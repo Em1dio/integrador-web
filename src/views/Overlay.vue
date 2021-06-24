@@ -57,7 +57,7 @@ export default {
       const opened = getIssueState("open");
       const closed = getIssueState("closed") || 0;
       const total = opened + closed;
-      this.progresso = opened / total;
+      this.progresso = closed / total;
       return {
         opened,
         closed,
