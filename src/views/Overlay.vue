@@ -38,30 +38,41 @@ export default {
   },
   created() {
     this.getIssues();
-    this.timer = setInterval(this.getIssues, 30000);
+    this.timer = setInterval(this.getIssues, 60 * 1000); // 1 minute
   },
   methods: {
     async getIssues() {
       const response = await fetch(
         `https://api.github.com/repos/${this.github.owner}/${this.github.repository}/issues?state=all`
       );
-      const data = await response.json();
 
-      const getIssueState = (state) => {
+      const getIssueState = (data, state) => {
         try {
           const issuesByState = data.filter((issues) => issues.state === state);
           return issuesByState.length;
         } catch (error) {}
       };
 
-      const opened = getIssueState("open");
-      const closed = getIssueState("closed") || 0;
-      const total = opened + closed;
-      this.progresso = closed / total;
-      return {
-        opened,
-        closed,
+      const getProgress = (githubData) => {
+        const opened = getIssueState(githubData, "open");
+        const closed = getIssueState(githubData, "closed") || 0;
+        const total = opened + closed;
+        this.progresso = closed / total;
+        return {
+          opened,
+          closed,
+        };
       };
+
+      if (response.status === 200) {
+        return getProgress(response.json());
+      } else {
+        const proxyResponse = await fetch(
+          `https://cors.pogu.workers.dev/?https://api.github.com/repos/${this.github.owner}/${this.github.repository}/issues?state=all`
+        );
+
+        return getProgress(await proxyResponse.json());
+      }
     },
   },
   computed: {
