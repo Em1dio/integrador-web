@@ -150,7 +150,6 @@ body {
   left: 0;
   display: flex;
   height: 26px;
-  /* width: 50%; */
   border-radius: 10px;
   background: #fd8900;
   color: #111827;
