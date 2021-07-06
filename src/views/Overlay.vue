@@ -68,7 +68,7 @@ export default {
         return getProgress(await response.json());
       } else {
         const proxyResponse = await fetch(
-          `https://cors.pogu.workers.dev/?https://api.github.com/repos/${this.github.owner}/${this.github.repository}/issues?state=all`
+          `https://fragrant-pine-c75b.em1dio.workers.dev/?https://api.github.com/repos/${this.github.owner}/${this.github.repository}/issues?state=all`
         );
 
         return getProgress(await proxyResponse.json());
