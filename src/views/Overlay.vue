@@ -65,7 +65,7 @@ export default {
       };
 
       if (response.status === 200) {
-        return getProgress(response.json());
+        return getProgress(await response.json());
       } else {
         const proxyResponse = await fetch(
           `https://cors.pogu.workers.dev/?https://api.github.com/repos/${this.github.owner}/${this.github.repository}/issues?state=all`
