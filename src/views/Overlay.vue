@@ -50,7 +50,9 @@ export default {
         try {
           const issuesByState = data.filter((issues) => issues.state === state);
           return issuesByState.length;
-        } catch (error) {}
+        } catch (error) {
+          throw error;
+        }
       };
 
       const getProgress = (githubData) => {
