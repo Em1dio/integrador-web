@@ -4,16 +4,16 @@
       <div class="content">
         <div class="titulo">
           <div class="github">
-            <brand-github-icon style="color: 111827" />
+            <brand-github-icon style="color: #111827" />
           </div>
-          {{ github.owner }}/{{ github.repository }}
+          <p class="text">{{ github.owner }}/{{ github.repository }}</p>
         </div>
         <div class="barraprogresso">
           <span class="barra" :style="styled"></span>
           <p>{{ progresso | toPercent }}</p>
         </div>
         <div class="comentarios">
-          <h2>{{ comments }}</h2>
+          <h2 class="text">{{ comments }}</h2>
         </div>
       </div>
     </div>

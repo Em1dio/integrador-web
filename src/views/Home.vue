@@ -91,7 +91,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Heebo:wght@300;500;700&display=swap");
 :root {
   --text-color-light: #000;
