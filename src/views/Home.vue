@@ -23,7 +23,9 @@
           </div>
         </div>
         <div class="photo">
-          <img src="https://www.github.com/caio-emidio.png" />
+          <img src="https://i.ibb.co/RyNjJnD/5342402.jpg" />
+          <img src="https://i.ibb.co/VW3pQY0/pp.jpg" />
+          <img src="https://i.ibb.co/FKC1tvq/image.png" />
         </div>
       </div>
       <div class="container">
@@ -73,16 +75,17 @@ export default {
           title: "Making a design system from scratch",
           data: "12 feb 2020",
           tags: "Design, Teste",
-          content: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
+          content:
+            "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
         },
         {
           title: "Just anothe title :)",
           data: "15 feb 2021",
           tags: "Design, Teste",
-          content: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
+          content:
+            "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
         },
       ],
-       
     };
   },
 };
@@ -163,9 +166,14 @@ a {
   font-size: 12px;
 }
 
+.content .photo {
+  display: flex;
+}
+
 .content img {
   border-radius: 50%;
   width: 243px;
+  margin-left: -35px;
 }
 
 .button {
