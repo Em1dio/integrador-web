@@ -51,13 +51,20 @@
       <div class="container">
         <div class="bar">
           <p class="title">Featured Work</p>
-          <a href="#" class="link">View all</a>
         </div>
-        <div class="posts">
-          <div v-for="work of works" :key="work" class="post">
-            <p class="title">{{ work.title }}</p>
-            <p class="info">{{ work.data }} | {{ work.tags }}</p>
-            <p class="post_content">{{ work.content }}</p>
+        <div class="works">
+          <div v-for="work of works" :key="work" class="work">
+            <div class="image">
+              <img :src="work.image" />
+            </div>
+            <div class="text">
+              <p class="title">{{ work.title }}</p>
+              <div class="info">
+                <p class="year">{{ work.year }}</p>
+                <p class="subtitle">{{ work.subtitle }}</p>
+              </div>
+              <p class="description">{{ work.description }}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -86,6 +93,32 @@ export default {
             "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
         },
       ],
+      works: [
+        {
+          image: "https://i.ibb.co/VZ2Zzqp/image.png",
+          title: "Dashboard",
+          year: "2018",
+          subtitle: "A simple dashboard",
+          description:
+            "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+        },
+        {
+          image: "https://i.ibb.co/VZ2Zzqp/image.png",
+          title: "Portfolio",
+          year: "2018",
+          subtitle: "A portfolio",
+          description:
+            "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+        },
+        {
+          image: "https://i.ibb.co/VZ2Zzqp/image.png",
+          title: "Blog",
+          year: "2018",
+          subtitle: "A blog",
+          description:
+            "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+        },
+      ],
     };
   },
 };
@@ -96,12 +129,13 @@ export default {
 :root {
   --text-color-light: #000;
   --text-color-gray: #e5e7eb;
-  --background-color: white;
+  --background-color: #fff;
   --button-active: #2563eb;
   --button-not-active: #1f2937;
   --text-link: #000;
   --color-primary: #00a8cc;
   --color-secondary: #ff6464;
+  --color-light: #8695a4;
 }
 
 * {
@@ -149,19 +183,19 @@ a {
   justify-content: space-between;
 }
 
-.text {
+.content .text {
   display: flex;
   flex-direction: column;
   width: 40%;
 }
 
-.text .title {
+.content .text .title {
   font-weight: 700;
   font-size: 44px;
   line-height: 50px;
 }
 
-.text .subtitle {
+.content .text .subtitle {
   font-weight: 400;
   font-size: 12px;
 }
@@ -193,6 +227,12 @@ a {
   color: var(--color-primary);
 }
 
+.bar .title {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 60px;
+}
+
 .blog {
   background: #edf7fa;
 }
@@ -218,8 +258,8 @@ a {
 .post {
   padding: 30px;
   border-radius: 4px;
+  background: white;
   transition: all 0.3s ease;
-  background: var(--background-color);
 }
 
 .post:hover {
@@ -237,5 +277,61 @@ a {
   font-weight: 300;
   font-size: 16px;
   line-height: 23px;
+}
+
+.works {
+  margin-top: 2vh;
+}
+
+.work {
+  display: flex;
+  gap: 10px;
+}
+
+.work .image img {
+  width: 246px;
+  height: 180px;
+  border-radius: 6px;
+}
+
+.work .text {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.text .title {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 44px;
+  color: #142850;
+}
+.text .info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.info .year {
+  padding: 3px 7px;
+  background: #142850;
+  color: white;
+  font-weight: 700;
+  border-radius: 16px;
+}
+
+.info .subtitle {
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 29px;
+  color: #8695a4;
+}
+
+.text .description {
+  margin-top: 1vh;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
+  color: #21243d;
 }
 </style>
