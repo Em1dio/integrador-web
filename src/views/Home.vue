@@ -2,13 +2,13 @@
   <div>
     <div class="navbar">
       <div class="container">
-        <a href="#">Main</a>
-        <a href="#">Projects</a>
-        <a href="#">Works</a>
-        <a href="#">Contact</a>
+        <a href="#main">Main</a>
+        <a href="#blog">Posts</a>
+        <a href="#work">Works</a>
+        <a href="#contact" class="scrollBehaviour">Contact</a>
       </div>
     </div>
-    <div class="container main_content">
+    <div class="container main_content" id="main">
       <div class="container content">
         <div class="text">
           <div class="title">
@@ -32,14 +32,14 @@
         <div class="button">Download Resume</div>
       </div>
     </div>
-    <div class="blog">
+    <div class="blog" id="blog">
       <div class="container">
         <div class="bar">
           <p class="title">Recent posts</p>
           <a href="#" class="link">View all</a>
         </div>
         <div class="posts">
-          <div v-for="post of posts" :key="post" class="post">
+          <div v-for="post of posts" :key="post.id" class="post">
             <p class="title">{{ post.title }}</p>
             <p class="info">{{ post.data }} | {{ post.tags }}</p>
             <p class="post_content">{{ post.content }}</p>
@@ -47,38 +47,64 @@
         </div>
       </div>
     </div>
-    <div class="featured_work">
+    <div class="featured_work" id="work">
       <div class="container">
         <div class="bar">
           <p class="title">Featured Work</p>
         </div>
         <div class="works">
-          <div v-for="work of works" :key="work" class="work">
-            <div class="image">
-              <img :src="work.image" />
-            </div>
-            <div class="text">
-              <p class="title">{{ work.title }}</p>
-              <div class="info">
-                <p class="year">{{ work.year }}</p>
-                <p class="subtitle">{{ work.subtitle }}</p>
+          <div v-for="work of works" :key="work.id" class="work">
+            <div class="content">
+              <img class="image" :src="work.image" />
+              <div class="text">
+                <p class="title">{{ work.title }}</p>
+                <div class="info">
+                  <p class="year">{{ work.year }}</p>
+                  <p class="subtitle">{{ work.subtitle }}</p>
+                </div>
+                <p class="description">{{ work.description }}</p>
               </div>
-              <p class="description">{{ work.description }}</p>
             </div>
+            <div class="border"></div>
           </div>
         </div>
       </div>
     </div>
+    <footer id="contact">
+      <div class="container">
+        <div class="icons">
+          <a href="#"><BrandFacebookIcon size="40px" /> </a>
+          <a href="#"><BrandInstagramIcon size="40px" /> </a>
+          <a href="#"><BrandLinkedinIcon size="40px" /> </a>
+          <a href="#"><BrandTwitterIcon size="40px" /> </a>
+        </div>
+        <p class="copyright">Copyright ©2020 All rights reserved</p>
+      </div>
+    </footer>
   </div>
 </template>
 
 <script>
 // https://www.figma.com/file/vWLP5hQF5RZUGWQ84OhHlf/Portfolio-UI---Web-%26-Mobile-(Community)?node-id=0%3A1
+import {
+  BrandFacebookIcon,
+  BrandInstagramIcon,
+  BrandLinkedinIcon,
+  BrandTwitterIcon,
+} from "vue-tabler-icons";
+
 export default {
+  components: {
+    BrandFacebookIcon,
+    BrandInstagramIcon,
+    BrandLinkedinIcon,
+    BrandTwitterIcon,
+  },
   data() {
     return {
       posts: [
         {
+          id: 1,
           title: "Making a design system from scratch",
           data: "12 feb 2020",
           tags: "Design, Teste",
@@ -86,6 +112,7 @@ export default {
             "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
         },
         {
+          id: 2,
           title: "Just anothe title :)",
           data: "15 feb 2021",
           tags: "Design, Teste",
@@ -95,23 +122,26 @@ export default {
       ],
       works: [
         {
-          image: "https://i.ibb.co/VZ2Zzqp/image.png",
+          id: 1,
+          image: "https://i.ibb.co/RyNjJnD/5342402.jpg",
           title: "Dashboard",
-          year: "2018",
+          year: "2020",
           subtitle: "A simple dashboard",
           description:
             "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
         },
         {
-          image: "https://i.ibb.co/VZ2Zzqp/image.png",
+          id: 2,
+          image: "https://i.ibb.co/RyNjJnD/5342402.jpg",
           title: "Portfolio",
-          year: "2018",
+          year: "2019",
           subtitle: "A portfolio",
           description:
             "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
         },
         {
-          image: "https://i.ibb.co/VZ2Zzqp/image.png",
+          id: 3,
+          image: "https://i.ibb.co/RyNjJnD/5342402.jpg",
           title: "Blog",
           year: "2018",
           subtitle: "A blog",
@@ -141,18 +171,18 @@ export default {
 * {
   font-family: "Heebo", sans-serif;
   box-sizing: border-box;
-  color: var(--text-color-light);
+  color: #000000;
 }
 
 body {
-  background-color: var(--background-color);
+  background-color: #e5e7eb;
 }
 
 a {
   text-align: center;
   padding: 7px 8px;
   text-decoration: none;
-  color: var(--text-color-light);
+  color: #0f0f0f;
 }
 
 .navbar .container {
@@ -162,7 +192,10 @@ a {
 }
 
 .navbar {
-  width: auto;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
 }
 
 .container {
@@ -204,7 +237,7 @@ a {
   display: flex;
 }
 
-.content img {
+.main_content .content img {
   border-radius: 50%;
   width: 243px;
   margin-left: -35px;
@@ -213,7 +246,7 @@ a {
 .button {
   display: inline-block;
   color: white;
-  background: var(--color-primary);
+  background: #00a8cc;
   border: 1px solid transparent;
   border-radius: 2px;
   padding: 5px 15px;
@@ -223,8 +256,8 @@ a {
 
 .button:hover {
   background: transparent;
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
+  border: 1px solid #00a8cc;
+  color: #00a8cc;
 }
 
 .bar .title {
@@ -245,7 +278,7 @@ a {
 .blog .container .bar .link {
   font-size: 16px;
   line-height: 23px;
-  color: var(--color-secondary);
+  color: #00a8cc;
 }
 
 .posts {
@@ -285,10 +318,16 @@ a {
 
 .work {
   display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 
-.work .image img {
+.work .content {
+  display: flex;
+  gap: 20px;
+}
+
+.work .content img {
   width: 246px;
   height: 180px;
   border-radius: 6px;
@@ -333,5 +372,41 @@ a {
   font-size: 16px;
   line-height: 23px;
   color: #21243d;
+}
+
+.border {
+  border: 1px solid #e0e0e0;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  text-align: center;
+}
+
+footer .icons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+footer .icons svg {
+  color: #21243d;
+}
+
+footer .copyright {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #21243d;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 </style>
