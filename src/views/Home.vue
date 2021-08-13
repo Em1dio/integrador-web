@@ -113,7 +113,7 @@ export default {
         },
         {
           id: 2,
-          title: "Just anothe title :)",
+          title: "Just another title :)",
           data: "15 feb 2021",
           tags: "Design, Teste",
           content:
