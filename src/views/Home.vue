@@ -5,7 +5,7 @@
         <a href="#main">Main</a>
         <a href="#blog">Posts</a>
         <a href="#work">Works</a>
-        <a href="#contact" class="scrollBehaviour">Contact</a>
+        <a href="#contact">Contact</a>
       </div>
     </div>
     <div class="container main_content" id="main">
@@ -47,25 +47,46 @@
         </div>
       </div>
     </div>
-    <div class="featured_work" id="work">
+    <div id="companies">
       <div class="container">
         <div class="bar">
-          <p class="title">Featured Work</p>
+          <p class="title">
+            I'm proud to have collaborated with some awesome companies:
+          </p>
+        </div>
+        <div class="companies space-4">
+          <div v-for="company of companies" :key="company.id" class="company">
+            <a :href="company.link">
+              <img :src="company.logo" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div v-if="works.length >= 0" class="featured_work" id="work">
+      <div class="container">
+        <div class="bar">
+          <p class="title">My Projects</p>
         </div>
         <div class="works">
-          <div v-for="work of works" :key="work.id" class="work">
-            <div class="content">
-              <img class="image" :src="work.image" />
-              <div class="text">
-                <p class="title">{{ work.title }}</p>
-                <div class="info">
-                  <p class="year">{{ work.year }}</p>
-                  <p class="subtitle">{{ work.subtitle }}</p>
-                </div>
-                <p class="description">{{ work.description }}</p>
-              </div>
-            </div>
-            <div class="border"></div>
+          <div v-for="work of works" :key="work.id">
+            <work-card :work="work" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feature_communities">
+      <div class="container">
+        <div class="bar">
+          <p class="title">My Communities</p>
+        </div>
+        <div class="communities">
+          <div v-for="community of communities" :key="community.id">
+            <img src="https://i.ibb.co/RyNjJnD/5342402.jpg" />
+            <p>{{ community.name }}</p>
+            <p>{{ community.l</p>
+            In Development
+            <img src="" />
           </div>
         </div>
       </div>
@@ -93,12 +114,15 @@ import {
   BrandTwitterIcon,
 } from "vue-tabler-icons";
 
+import workCard from "../components/cardWork.vue";
+
 export default {
   components: {
     BrandFacebookIcon,
     BrandInstagramIcon,
     BrandLinkedinIcon,
     BrandTwitterIcon,
+    workCard,
   },
   data() {
     return {
@@ -147,6 +171,24 @@ export default {
           subtitle: "A blog",
           description:
             "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+        },
+      ],
+
+      companies: [
+        {
+          id: 1,
+          link: "https://www.hsbc.com.br",
+          logo: "https://i.ibb.co/phnCtvY/5a1d2ce64ac6b00ff574e27f.png",
+        },
+        {
+          id: 2,
+          link: "https://www.bradescoseguros.com.br",
+          logo: "https://i.ibb.co/Q9Bkp5c/bradesco-seguros-logo-16.png",
+        },
+        {
+          id: 3,
+          link: "https://www.enterpryze.com",
+          logo: "https://i.ibb.co/JCxrNqG/Enterpryze-logo-shadow.png",
         },
       ],
     };
@@ -243,6 +285,12 @@ a {
   margin-left: -35px;
 }
 
+.main_content .content img:hover {
+  border-radius: 50%;
+  width: 243px;
+  margin-left: -35px;
+}
+
 .button {
   display: inline-block;
   color: white;
@@ -316,41 +364,6 @@ a {
   margin-top: 2vh;
 }
 
-.work {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.work .content {
-  display: flex;
-  gap: 20px;
-}
-
-.work .content img {
-  width: 246px;
-  height: 180px;
-  border-radius: 6px;
-}
-
-.work .text {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-}
-
-.text .title {
-  font-weight: 700;
-  font-size: 30px;
-  line-height: 44px;
-  color: #142850;
-}
-.text .info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
 .info .year {
   padding: 3px 7px;
   background: #142850;
@@ -372,12 +385,6 @@ a {
   font-size: 16px;
   line-height: 23px;
   color: #21243d;
-}
-
-.border {
-  border: 1px solid #e0e0e0;
-  margin-top: 5vh;
-  margin-bottom: 5vh;
 }
 
 footer {
@@ -408,5 +415,28 @@ footer .copyright {
 
 html {
   scroll-behavior: smooth;
+}
+
+.companies {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.company img {
+  width: auto;
+  height: 48px;
+  transition: all 0.3s ease;
+  filter: grayscale(100%);
+}
+
+.company img:hover {
+  filter: grayscale(0%);
+}
+
+.space-4 {
+  margin-top: 4vh;
+  margin-bottom: 4vh;
 }
 </style>
