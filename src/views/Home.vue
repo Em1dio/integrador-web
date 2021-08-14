@@ -429,10 +429,12 @@ html {
   height: 48px;
   transition: all 0.3s ease;
   filter: grayscale(100%);
+  opacity: 0.5;
 }
 
 .company img:hover {
   filter: grayscale(0%);
+  opacity: 1;
 }
 
 .space-4 {
