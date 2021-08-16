@@ -3,8 +3,8 @@
     <div class="navbar">
       <div class="container">
         <a href="#main">Main</a>
-        <a href="#blog">Posts</a>
         <a href="#work">Works</a>
+        <a href="#communities">Communities</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
@@ -75,7 +75,7 @@
         </div>
       </div>
     </div>
-    <div class="feature_communities">
+    <div id="communities">
       <div class="container">
         <div class="bar">
           <p class="title">Communities than I am part of:</p>
