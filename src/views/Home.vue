@@ -32,7 +32,7 @@
         <div class="button">Download Resume</div>
       </div>
     </div>
-    <div class="blog" id="blog">
+    <div v-if="posts.lenght < 0" class="blog" id="blog">
       <div class="container">
         <div class="bar">
           <p class="title">Recent posts</p>
@@ -56,7 +56,7 @@
         </div>
         <div class="companies space-4">
           <div v-for="company of companies" :key="company.id" class="company">
-            <a :href="company.link">
+            <a :href="company.link" target="_blank" rel="noopener">
               <img :src="company.logo" />
             </a>
           </div>
@@ -78,28 +78,39 @@
     <div class="feature_communities">
       <div class="container">
         <div class="bar">
-          <p class="title">My Communities</p>
+          <p class="title">Communities than I am part of:</p>
         </div>
         <div class="communities">
-          <div v-for="community of communities" :key="community.id">
-            <img src="https://i.ibb.co/RyNjJnD/5342402.jpg" />
-            <p>{{ community.name }}</p>
-            <p>{{ community.l</p>
-            In Development
-            <img src="" />
-          </div>
+          <a
+            v-for="community of communities"
+            :key="community.id"
+            class="community"
+            :href="community.link"
+            target="_blank"
+            rel="noopener"
+          >
+            <img :src="community.img" />
+          </a>
         </div>
       </div>
     </div>
     <footer id="contact">
       <div class="container">
         <div class="icons">
-          <a href="#"><BrandFacebookIcon size="40px" /> </a>
-          <a href="#"><BrandInstagramIcon size="40px" /> </a>
-          <a href="#"><BrandLinkedinIcon size="40px" /> </a>
-          <a href="#"><BrandTwitterIcon size="40px" /> </a>
+          <a href="https://www.facebook.com/CaioCarnelos" target="_blank" rel="noopener"
+            ><BrandFacebookIcon size="40px" />
+          </a>
+          <a href="https://www.instagram.com/caio.carnelos/" target="_blank" rel="noopener"
+            ><BrandInstagramIcon size="40px" />
+          </a>
+          <a href="https://www.linkedin.com/in/caioemidioac/" target="_blank" rel="noopener"
+            ><BrandLinkedinIcon size="40px" />
+          </a>
+          <a href="https://twitch.tv/em1dio" target="_blank" rel="noopener"
+            ><BrandTwitchIcon size="40px" />
+          </a>
         </div>
-        <p class="copyright">Copyright ©2020 All rights reserved</p>
+        <p class="copyright">Copyright ©2021 All rights reserved</p>
       </div>
     </footer>
   </div>
@@ -111,7 +122,7 @@ import {
   BrandFacebookIcon,
   BrandInstagramIcon,
   BrandLinkedinIcon,
-  BrandTwitterIcon,
+  BrandTwitchIcon,
 } from "vue-tabler-icons";
 
 import workCard from "../components/cardWork.vue";
@@ -121,7 +132,7 @@ export default {
     BrandFacebookIcon,
     BrandInstagramIcon,
     BrandLinkedinIcon,
-    BrandTwitterIcon,
+    BrandTwitchIcon,
     workCard,
   },
   data() {
@@ -148,27 +159,27 @@ export default {
         {
           id: 1,
           image: "https://i.ibb.co/RyNjJnD/5342402.jpg",
-          title: "Dashboard",
-          year: "2020",
-          subtitle: "A simple dashboard",
+          title: "Enterpryze",
+          year: "2020-Present",
+          subtitle: "Backend Developer",
           description:
             "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
         },
         {
           id: 2,
-          image: "https://i.ibb.co/RyNjJnD/5342402.jpg",
-          title: "Portfolio",
-          year: "2019",
-          subtitle: "A portfolio",
+          image: "https://i.ibb.co/VW3pQY0/pp.jpg",
+          title: "Bradesco",
+          year: "2017-2019",
+          subtitle: "Analyst & Software Leader",
           description:
             "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
         },
         {
           id: 3,
-          image: "https://i.ibb.co/RyNjJnD/5342402.jpg",
-          title: "Blog",
-          year: "2018",
-          subtitle: "A blog",
+          image: "https://i.ibb.co/FKC1tvq/image.png",
+          title: "HSBC",
+          year: "2012-2016",
+          subtitle: "Mainframe Support Analyst",
           description:
             "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
         },
@@ -189,6 +200,18 @@ export default {
           id: 3,
           link: "https://www.enterpryze.com",
           logo: "https://i.ibb.co/JCxrNqG/Enterpryze-logo-shadow.png",
+        },
+      ],
+      communities: [
+        {
+          id: 1,
+          img: "https://i.ibb.co/QMPK6Z2/logo-f3528aa2.png",
+          link: "http://www.ukecode.org",
+        },
+        {
+          id: 2,
+          img: "https://i.ibb.co/XJ1DNpX/logo.png",
+          link: "https://ahub.tech",
         },
       ],
     };
@@ -364,29 +387,6 @@ a {
   margin-top: 2vh;
 }
 
-.info .year {
-  padding: 3px 7px;
-  background: #142850;
-  color: white;
-  font-weight: 700;
-  border-radius: 16px;
-}
-
-.info .subtitle {
-  font-weight: 300;
-  font-size: 20px;
-  line-height: 29px;
-  color: #8695a4;
-}
-
-.text .description {
-  margin-top: 1vh;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 23px;
-  color: #21243d;
-}
-
 footer {
   display: flex;
   flex-direction: column;
@@ -417,6 +417,10 @@ html {
   scroll-behavior: smooth;
 }
 
+#companies {
+  background: #edf7fa;
+}
+
 .companies {
   display: flex;
   gap: 30px;
@@ -427,7 +431,7 @@ html {
 .company img {
   width: auto;
   height: 48px;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
   filter: grayscale(100%);
   opacity: 0.5;
 }
@@ -435,10 +439,41 @@ html {
 .company img:hover {
   filter: grayscale(0%);
   opacity: 1;
+  transform: scale(1.05);
 }
 
 .space-4 {
   margin-top: 4vh;
   margin-bottom: 4vh;
+}
+
+.communities {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.community {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 100px;
+  background: #91e2fa;
+  border: 1px solid #e9eef7;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+.community:hover {
+  background: #00a8cc;
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
+}
+.community img {
+  width: 135px;
+  height: auto;
 }
 </style>

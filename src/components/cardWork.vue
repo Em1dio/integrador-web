@@ -46,6 +46,29 @@ export default {
   width: 50%;
 }
 
+.info .year {
+  padding: 3px 7px;
+  background: #142850;
+  color: white;
+  font-weight: 700;
+  border-radius: 16px;
+}
+
+.info .subtitle {
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 29px;
+  color: #8695a4;
+}
+
+.text .description {
+  margin-top: 1vh;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
+  color: #21243d;
+}
+
 .text .title {
   font-weight: 700;
   font-size: 30px;
