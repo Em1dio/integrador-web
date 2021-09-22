@@ -7,14 +7,7 @@
 </template>
 
 <script>
-// https://www.figma.com/file/vWLP5hQF5RZUGWQ84OhHlf/Portfolio-UI---Web-%26-Mobile-(Community)?node-id=0%3A1
-// import {
-//   BrandFacebookIcon,
-// } from "vue-tabler-icons";
 export default {
-  components: {
-    // BrandFacebookIcon,
-  },
   data() {
     return {
       euro: 0,
@@ -33,7 +26,7 @@ export default {
         }
       );
       const data = await response.json();
-      this.euro = Math.round(data.currency[0].askPrice * 100) / 100;
+      this.euro = Math.round(data.currency[0].bidPrice * 100) / 100;
     },
   },
 };
