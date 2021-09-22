@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '@/views/Home.vue';
+import Coins from '@/views/Coins.vue';
 import Overlay from '@/views/Overlay.vue';
 import Quotes from '@/views/Quotes.vue';
 
@@ -11,6 +12,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
+  },
+  {
+    path: '/coins',
+    name: 'Coins',
+    component: Coins,
   },
   {
     path: '/barra-github',
