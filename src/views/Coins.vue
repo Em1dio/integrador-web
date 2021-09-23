@@ -111,4 +111,15 @@ h1 {
   font-size: 20vh;
   color: #1db911;
 }
+input {
+  text-align: center;
+  border: none;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10.6px);
+  -webkit-backdrop-filter: blur(10.6px);
+  padding: 1vh;
+  font-size: 3vh;
+  color: #121212;
+}
 </style>
