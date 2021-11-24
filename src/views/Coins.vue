@@ -22,7 +22,7 @@ export default {
   },
   created() {
     this.getValue();
-    this.timer = setInterval(this.getQuotes, 15 * 60 * 1000); // 1 minuto
+    this.timer = setInterval(this.getValue, 15 * 60 * 1000); // 1 minuto
   },
   computed: {
     isActive() {
