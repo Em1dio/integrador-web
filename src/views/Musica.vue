@@ -32,7 +32,7 @@ export default {
   methods: {
     async getValue() {
       const token =
-        "BQCyiz2HEv6lDcgxfaknxEcFEOZrA5H7dji4n8_5Fco0rVukv8sKNdyrFEbRKIPaxriA6a3RbCxzkHme9FYVnL8z6cVcXRiTB4mdlLeNt3bBeL1u-sfEDEbM9gFGUDnpOJs3ZC3IRwRxAB89uGZIMA";
+        "BQBvLZILsQTemsfBiIVrCw0MK9IQxDNdeAmf0Zke1HEVYy7J3SWy_9kiZzqWBAaU9RAJl9xfXsyCYdBmG2RezSnPF7CHTjQ8IWEZVeBQ81lL4jQkkKWdDHRpe25nL2Whc5p4s-bccCiTlG4qxtuG_Q";
       const myHeaders = new Headers();
       myHeaders.append("Accept", "application/json");
       myHeaders.append("Content-Type", "application/json");
@@ -55,7 +55,6 @@ export default {
             .join(", ")
             .substring(0, 40) || "";
         this.musica.nome = data.item.name || "";
-        
       } catch (error) {
         this.musica = {
           imagem: "",
@@ -160,19 +159,7 @@ img {
   height: 200px;
   border: 4px solid #a970ff;
   z-index: -1;
-  -webkit-animation: spin 4s linear infinite;
-  -moz-animation: spin 4s linear infinite;
-  animation: spin 4s linear infinite;
-}
-@-moz-keyframes spin {
-  100% {
-    -moz-transform: rotate(-360deg);
-  }
-}
-@-webkit-keyframes spin {
-  100% {
-    -webkit-transform: rotate(-360deg);
-  }
+  animation: spin 8s linear infinite;
 }
 @keyframes spin {
   100% {
