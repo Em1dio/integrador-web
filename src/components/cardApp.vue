@@ -1,16 +1,16 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <p>Bitcoin Overlay</p>
+      <p>{{title}}</p>
       <div class="icon-badge">
         <DeviceLaptopIcon />
       </div>
     </div>
     <div class="card-body">
-      <p>This is the home page.</p>
+      <slot>CODE GO HERE</slot>
     </div>
     <div class="card-actions">
-      <button>Generate</button>
+      <button @click="sendTo">{{button_title}}</button>
     </div>
   </div>
 </template>
@@ -19,8 +19,30 @@
 import { DeviceLaptopIcon } from "vue-tabler-icons";
 
 export default {
+  props: {
+    title: {
+      type: String,
+      required: true,
+      default: "no-title"
+    },
+    link: {
+      type: String,
+      required: true,
+      default: ""
+    },
+    button_title: {
+      type: String,
+      required: false,
+      default: "Generate"
+    },
+  },
   components: {
     DeviceLaptopIcon,
+  },
+  methods: {
+    sendTo() {
+      window.open(this.link, "_blank");
+    },
   },
   data() {
     return {};
@@ -40,13 +62,12 @@ export default {
 .card {
   background-color: #3e3d40;
   border-radius: 10px;
-  padding: 20px;
   width: 220px;
   height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid #3e3d40;
+  border: 1px solid transparent;
   transition: all 0.3s ease;
 }
 
@@ -61,9 +82,15 @@ export default {
   font-size: 12px;
   line-height: 14px;
   color: #dadada;
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.card .card-body {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .card .card-header .icon-badge {
@@ -76,26 +103,39 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.card .card-header .icon-badge:hover {
+  background: #6763fd;
+  border: 1px solid #6763fd;
 }
 
 .card .card-actions {
   display: flex;
+  flex-direction: row-reverse;
+  padding: 20px;
   align-items: center;
   justify-content: space-between;
   background-color: #313133;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 button {
   width: 100px;
   height: 25px;
 
+  border: 1px solid transparent;
   background: #6763fd;
   border-radius: 10px;
   padding-left: 10px;
   padding-right: 10px;
   transition: all 0.3s ease;
 }
+
 button:hover {
-  background: #7f7bf1;
+  background: #6863FDAC;
+  border: 1px solid #6763fd;
 }
 </style>
