@@ -91,6 +91,11 @@ export default {
 .card .card-body {
   padding-left: 10px;
   padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .card .card-header .icon-badge {

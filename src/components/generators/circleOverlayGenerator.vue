@@ -1,47 +1,35 @@
 <template>
   <div class="body">
-    <cardApp title="Bitcoin Overlay" :link="componentLink">
+    <cardApp title="Circle Overlay" :link="componentLink">
       <div class="color_picker">
-        <p>Background</p>
-        <input type="color" class="color_picker_style" :style="styleColorPick" v-model="background" />
+        <p>First Color</p>
+        <input type="color" class="color_picker_style" v-model="firstColor" />
       </div>
       <div class="color_picker">
-        <p>Text Color</p>
-        <input type="color" v-model="textColor" />
-      </div>
-
-      <div class="preview" :style="PreviewStyle">
-        <p :style="PreviewStyle">Preview</p>
+        <p>Second Color</p>
+        <input type="color" v-model="secondColor" />
       </div>
     </cardApp>
   </div>
 </template>
 
 <script>
-import cardApp from "./cardApp.vue";
-// const clipboard = "clipboard";
+import cardApp from "../cardApp.vue";
 export default {
   components: {
     cardApp,
   },
   data() {
     return {
-      background: "#000000",
-      textColor: "#ffffff",
+      firstColor: "#000000",
+      secondColor: "#ffffff",
     };
   },
   computed: {
-    PreviewStyle() {
-      return {
-        background: this.background,
-        color: this.textColor,
-      };
-    },
     componentLink() {
-      const background = this.background.replace("#", "");
-      const textColor = this.textColor.replace("#", "");
-      const url = `https://caio-emidio.github.io/BitWitch/?bgcolor=${background}&color=${textColor}`;
-      // clipboard.writeText('Text to get copied');
+      const primaryColor = this.firstColor.replace("#", "");
+      const secondaryColor = this.secondColor.replace("#", "");
+      const url = `/circle?primaryColor=${primaryColor}&secondaryColor=${secondaryColor}`;
       return url;
     },
   },

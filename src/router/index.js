@@ -4,7 +4,7 @@ import Home from '@/views/Home.vue';
 import Coins from '@/views/Coins.vue';
 import TaskCreator from '@/views/taskcreator.vue';
 import Circle from '@/views/circleanimation.vue';
-import Musica from '@/views/Musica.vue';
+import SpotifyOverlay from '@/views/SpotifyOverlay.vue';
 import Overlay from '@/views/Overlay.vue';
 import Quotes from '@/views/Quotes.vue';
 
@@ -32,9 +32,9 @@ const routes = [
     component: TaskCreator,
   },
   {
-    path: '/musica',
+    path: '/spotify-overlay',
     name: 'Musica',
-    component: Musica,
+    component: SpotifyOverlay,
   },
   {
     path: '/barra-github',
