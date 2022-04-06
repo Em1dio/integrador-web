@@ -1,15 +1,20 @@
 <template>
   <div class="body">
     <bitcoin-overlay-generator />
+    <circle-overlay-generator />
+    <spotify-overlay-generator />
   </div>
 </template>
 
 <script>
-import BitcoinOverlayGenerator from "../components/bitcoinOverlayGenerator.vue";
-// const clipboard = "clipboard";
+import BitcoinOverlayGenerator from "../components/generators/bitcoinOverlayGenerator";
+import SpotifyOverlayGenerator from "../components/generators/spotifyOverlayGenerator";
+import CircleOverlayGenerator from "../components/generators/circleOverlayGenerator";
 export default {
   components: {
     BitcoinOverlayGenerator,
+    CircleOverlayGenerator,
+    SpotifyOverlayGenerator
   },
   data() {
     return {};

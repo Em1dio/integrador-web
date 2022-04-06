@@ -31,8 +31,7 @@ export default {
   },
   methods: {
     async getValue() {
-      const token =
-        "BQBvLZILsQTemsfBiIVrCw0MK9IQxDNdeAmf0Zke1HEVYy7J3SWy_9kiZzqWBAaU9RAJl9xfXsyCYdBmG2RezSnPF7CHTjQ8IWEZVeBQ81lL4jQkkKWdDHRpe25nL2Whc5p4s-bccCiTlG4qxtuG_Q";
+      const token = this.$route.query.token;
       const myHeaders = new Headers();
       myHeaders.append("Accept", "application/json");
       myHeaders.append("Content-Type", "application/json");

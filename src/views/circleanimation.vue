@@ -1,16 +1,58 @@
 <template>
   <div class="main">
-    <div class="circle">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="circle" :style="circleStyle">
+      <span :style="circleStyleSpan"></span>
+      <span :style="circleStyleSpan"></span>
+      <span :style="circleStyleSpan"></span>
+      <span :style="circleStyleSpan"></span>
+      <span :style="circleStyleSpan"></span>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    background: {
+      type: String,
+      required: false,
+      default: "#000000",
+    },
+    primaryColor: {
+      type: String,
+      required: false,
+      default: "#FFFFFF",
+    },
+    secondaryColor: {
+      type: String,
+      required: false,
+      default: "#000000",
+    },
+    size: {
+      type: Number,
+      required: false,
+      default: 60,
+    },
+  },
+  computed: {
+    circleStyleSpan() {
+      const primaryColor = `#${this.$route.query.primaryColor}` || this.primaryColor;
+      const secondaryColor = `#${this.$route.query.secondaryColor}` || this.secondaryColor;
+      return {
+        backgroundImage: `linear-gradient(${primaryColor}, ${secondaryColor})`,
+      }
+    },
+    circleStyle() {
+      const primaryColor = `#${this.$route.query.primaryColor}` || this.primaryColor;
+      const secondaryColor = `#${this.$route.query.secondaryColor}` || this.secondaryColor;
+      return {
+        backgroundImage: `linear-gradient(${primaryColor}, ${secondaryColor})`,
+        width: `${this.size}vh`,
+        height: `${this.size}vh`,
+      };
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -33,9 +75,6 @@ body {
 
 .circle {
   position: relative;
-  width: 60vh;
-  height: 60vh;
-  background: linear-gradient(#722cde, #111A2E);
   border-radius: 50%;
   animation: animate 2s linear infinite;
 }
@@ -65,7 +104,6 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(#722cde, #111A2E66);
   border-radius: 50%;
 }
 
