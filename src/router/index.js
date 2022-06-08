@@ -7,6 +7,7 @@ import Circle from '@/views/circleanimation.vue';
 import SpotifyOverlay from '@/views/SpotifyOverlay.vue';
 import Overlay from '@/views/Overlay.vue';
 import Quotes from '@/views/Quotes.vue';
+import Card from '@/views/Card.vue';
 
 Vue.use(VueRouter);
 
@@ -45,6 +46,11 @@ const routes = [
     path: '/quotes',
     name: 'Quotes', 
     component: Quotes,
+  },
+  {
+    path: '/card',
+    name: 'Card', 
+    component: Card,
   },
 ];
 
