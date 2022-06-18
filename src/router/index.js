@@ -8,6 +8,7 @@ import SpotifyOverlay from '@/views/SpotifyOverlay.vue';
 import Overlay from '@/views/Overlay.vue';
 import Quotes from '@/views/Quotes.vue';
 import Card from '@/views/Card.vue';
+import Teams from '@/views/Teams.vue';
 
 Vue.use(VueRouter);
 
@@ -51,6 +52,11 @@ const routes = [
     path: '/card',
     name: 'Card', 
     component: Card,
+  },
+  {
+    path: '/teams',
+    name: 'Teams', 
+    component: Teams,
   },
 ];
 
