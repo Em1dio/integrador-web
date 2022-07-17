@@ -3,6 +3,7 @@
     <bitcoin-overlay-generator />
     <circle-overlay-generator />
     <spotify-overlay-generator />
+    <barra-overlay-generator />
   </div>
 </template>
 
@@ -10,11 +11,13 @@
 import BitcoinOverlayGenerator from "../components/generators/bitcoinOverlayGenerator";
 import SpotifyOverlayGenerator from "../components/generators/spotifyOverlayGenerator";
 import CircleOverlayGenerator from "../components/generators/circleOverlayGenerator";
+import BarraOverlayGenerator from "../components/generators/barraOverlayGenerator";
 export default {
   components: {
     BitcoinOverlayGenerator,
     CircleOverlayGenerator,
-    SpotifyOverlayGenerator
+    SpotifyOverlayGenerator,
+    BarraOverlayGenerator
   },
   data() {
     return {};
