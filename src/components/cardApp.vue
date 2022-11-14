@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <p>{{title}}</p>
+      <p>{{ title }}</p>
       <div class="icon-badge">
         <DeviceLaptopIcon />
       </div>
@@ -10,7 +10,7 @@
       <slot>CODE GO HERE</slot>
     </div>
     <div class="card-actions">
-      <button @click="sendTo">{{button_title}}</button>
+      <button @click="sendTo">{{ button_title }}</button>
     </div>
   </div>
 </template>
@@ -23,17 +23,26 @@ export default {
     title: {
       type: String,
       required: true,
-      default: "no-title"
+      default: "no-title",
     },
     link: {
       type: String,
       required: true,
-      default: ""
+      default: "",
+    },
+    requestBody: {
+      type: Object,
+      required: false,
+    },
+    type: {
+      type: String,
+      required: false,
+      default: "GET",
     },
     button_title: {
       type: String,
       required: false,
-      default: "Generate"
+      default: "Generate",
     },
   },
   components: {
@@ -41,7 +50,29 @@ export default {
   },
   methods: {
     sendTo() {
+      switch (this.type) {
+        case "GET":
+          this.sendGet();
+          break;
+        case "POST":
+          this.sendPost();
+          break;
+        default:
+          this.sendGet();
+          break;
+      }
+    },
+    sendGet() {
       window.open(this.link, "_blank");
+    },
+    sendPost() {
+      fetch(this.link, {
+        method: "POST",
+        body: JSON.stringify(this.requestBody),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
     },
   },
   data() {
@@ -140,7 +171,7 @@ button {
 }
 
 button:hover {
-  background: #6863FDAC;
+  background: #6863fdac;
   border: 1px solid #6763fd;
 }
 </style>

@@ -4,6 +4,7 @@
     <circle-overlay-generator />
     <spotify-overlay-generator />
     <barra-overlay-generator />
+    <tools-to-discord />
   </div>
 </template>
 
@@ -12,12 +13,15 @@ import BitcoinOverlayGenerator from "../components/generators/bitcoinOverlayGene
 import SpotifyOverlayGenerator from "../components/generators/spotifyOverlayGenerator";
 import CircleOverlayGenerator from "../components/generators/circleOverlayGenerator";
 import BarraOverlayGenerator from "../components/generators/barraOverlayGenerator";
+import ToolsToDiscord from "../components/generators/toolsToDiscord";
+
 export default {
   components: {
     BitcoinOverlayGenerator,
     CircleOverlayGenerator,
     SpotifyOverlayGenerator,
-    BarraOverlayGenerator
+    BarraOverlayGenerator,
+    ToolsToDiscord
   },
   data() {
     return {};

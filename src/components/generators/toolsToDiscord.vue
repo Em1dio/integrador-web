@@ -1,13 +1,22 @@
 <template>
   <div class="body">
-    <cardApp title="Barra Overlay" :link="componentLink">
+    <cardApp
+      title="Tools to Discord"
+      :link="componentLink"
+      :requestBody="componentBody"
+      type="POST"
+    >
       <div class="text_element">
-        <p>Owner</p>
-        <input type="text" v-model="owner" />
+        <p>Ferramenta</p>
+        <input type="text" v-model="tool" />
       </div>
       <div class="text_element">
-        <p>Comments</p>
-        <input type="text" v-model="comments" />
+        <p>Descricao</p>
+        <input type="text" v-model="description" />
+      </div>
+      <div class="text_element">
+        <p>URL</p>
+        <input type="text" v-model="url" />
       </div>
     </cardApp>
   </div>
@@ -21,21 +30,20 @@ export default {
   },
   data() {
     return {
-      owner: "",
-      comments: "",
+      tool: "",
+      url: "",
+      description: "",
     };
   },
   computed: {
-    PreviewStyle() {
-      return {
-        background: this.background,
-        color: this.textColor,
-      };
-    },
     componentLink() {
-      const url = `/barra?owner=${this.owner}&comments=${this.comments}`;
-      // clipboard.writeText('Text to get copied');
+      const url = `https://discord.com/api/webhooks/945652339254112267/DopN1w20lmsSmk8prOf-5Owzkf1i1DqymVjOduEZqfMj-A-LS11sixAu_8CBslfyCgsE`;
       return url;
+    },
+    componentBody() {
+      return {
+        content: `Ferramenta: ${this.tool} \nDescricao: ${this.description} \nlink: ${this.url}`,
+      };
     },
   },
 };

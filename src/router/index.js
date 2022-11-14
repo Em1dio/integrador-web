@@ -10,7 +10,7 @@ import Barra from '@/views/barra.vue';
 import Quotes from '@/views/Quotes.vue';
 import Card from '@/views/Card.vue';
 import Teams from '@/views/Teams.vue';
-
+import RickAndMorty from '@/views/RickAndMorty.vue';
 Vue.use(VueRouter);
 
 const routes = [
@@ -63,6 +63,11 @@ const routes = [
     path: '/teams',
     name: 'Teams', 
     component: Teams,
+  },
+  {
+    path: '/rickandmorty',
+    name: 'RickAndMorty', 
+    component: RickAndMorty,
   },
 ];
 
